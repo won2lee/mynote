@@ -24,7 +24,7 @@ print('''<!doctype html>
 <head>
   <title>WEB1 - Welcome</title>
   <meta charset="utf-8">
-  <link type="text/css" rel="stylesheet" href="mystyle4.css">
+  <link type="text/css" rel="stylesheet" href="mystyle7.css">
 </head>
 <body>
   <h1><a href="index.py">My Note</a></h1>
@@ -38,7 +38,7 @@ print('''<!doctype html>
           <p><input type="text" name="class1" placeholder="basis">
              <input type="text" name="class2" placeholder="">
           </p>
-          <p><textarea row=10 style="width:80%;" name="note" placeholder="note"></textarea></p>
+          <p><textarea class="autosize" row=10 style="width:80%;" name="note" placeholder="note"></textarea></p>
           <p><input type="submit"></p>
         </form>
     </div>

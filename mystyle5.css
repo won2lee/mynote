@@ -33,12 +33,9 @@ ol{
   display: grid;
   grid-template-columns: 60px 60px 60px;
 }
-textarea.autosize { min-height: 300px; }
-src="//code.jquery.com/jquery.min.js"
-
-$("textarea.autosize").on('keydown keyup', function () {
-  $(this).height(1).height( $(this).prop('scrollHeight')+12 );
-});
+textarea {
+  resize: none;
+}
 @media(max-width:800px){
   #grid{
     display: block;
