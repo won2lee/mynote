@@ -11,10 +11,10 @@ open_db = pymysql.connect(
 cursor = open_db.cursor(pymysql.cursors.DictCursor)
 
 def get_notelist(clist,class1):
-    if clist:
-        sql = "SELECT id,note,created,class1 FROM mynote WHERE class1='"+class1+"' ORDER BY id DESC LIMIT 10;"
+    if clist:    # to list records in clicked class
+        sql = "SELECT id,note,created,class1 FROM mynote WHERE class1='"+class1+"' ORDER BY id DESC LIMIT 20;"
     else:
-        sql = "SELECT id,note,created,class1 FROM mynote ORDER BY id DESC LIMIT 10;"
+        sql = "SELECT id,note,created,class1 FROM mynote ORDER BY id DESC LIMIT 20;"
     cursor.execute(sql)
     result = cursor.fetchall()
 
