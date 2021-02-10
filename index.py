@@ -41,7 +41,7 @@ print('''<!doctype html>
 <head>
   <title>WEB1 - Welcome</title>
   <meta charset="utf-8">
-  <link type="text/css" rel="stylesheet" href="mystyle8.css">
+  <link type="text/css" rel="stylesheet" href="mystyle9.css">
 </head>
 <body>
   <h1><a href="index.py">My Note</a></h1>
