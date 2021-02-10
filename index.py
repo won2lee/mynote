@@ -9,14 +9,14 @@ from linkdb import get_notelist, get_note
 # for item in files:
 #     listStr = listStr + '<li><a href="index.py?id={name}">{name}</a></li>'.format(name=item)
 
-def form_maker(clss,id,class1):
+def form_maker(clss,id,class1=None):
     scrpt = '''
             <form action="{clss}.py" method="post">
                 <input type="hidden" name="id" value="{id}">
                 <input type="hidden" name="class1" value="{class1}">
                 <input type="submit" value="{clss}">
             </form>
-        '''.format(clss=clss,id=id)
+        '''.format(clss=clss,id=id,class1=class1)
     return scrpt
 
 form = cgi.FieldStorage()
