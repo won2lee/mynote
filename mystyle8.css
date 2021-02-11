@@ -33,8 +33,7 @@ ol{
   display: grid;
   grid-template-columns: 60px 60px 60px;
 }
-textarea.autosize { min-height: 500px; }
-
+textarea.autosize { min-height: 300px; }
 
 @media(max-width:800px){
   #grid{
