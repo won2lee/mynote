@@ -10,6 +10,17 @@ open_db = pymysql.connect(
 )
 cursor = open_db.cursor(pymysql.cursors.DictCursor)
 
+# def form_maker(clss,id,class1=None):
+#     clfunc = "confirm" if clss=="delete" else clss
+#     scrpt = '''
+#             <form action="{clfunc}.py" method="post">
+#                 <input type="hidden" name="id" value="{id}">
+#                 <input type="hidden" name="class1" value="{class1}">
+#                 <input type="submit" value="{clss}">
+#             </form>
+#         '''.format(clss=clss,id=id,class1=class1,clfunc=clfunc)
+#     return scrpt
+
 def get_notelist(clist,class1):
     if clist:    # to list records in clicked class
         sql = "SELECT id,note,created,class1 FROM mynote WHERE class1='"+class1+"' ORDER BY id DESC LIMIT 20;"
