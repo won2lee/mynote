@@ -33,6 +33,10 @@ ol{
   display: grid;
   grid-template-columns: 60px 60px 60px;
 }
+#grid #article #to_action2{
+  display: grid;
+  grid-template-columns: 200px ifr;
+}
 textarea.autosize { min-height: 300px; }
 
 
