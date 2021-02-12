@@ -25,15 +25,27 @@ def get_notelist(clist,class1):
         listStr = listStr + "({}) {}</a></li>".format(item['created'].strftime('%m-%d'),item['note'][:25])
     return listStr
 
-def get_note(id=None):
+def get_note(id=None,update=False):
     if id:
-        sql = "SELECT id,note,created FROM mynote WHERE id="+str(id)+";"
+        sql = "SELECT id,note,created,class1 FROM mynote WHERE id="+str(id)+";"
         #sql = "SELECT id,note,created FROM mynote WHERE id='"+tl+"';"
     else:
-        sql = "SELECT id,note,created FROM mynote ORDER BY id DESC LIMIT 1;"
+        id=''
+        sql = "SELECT id,note,created,class1 FROM mynote ORDER BY id DESC LIMIT 1;"
     cursor.execute(sql)
     result = cursor.fetchall()
-    return result[0]['note']
+    if update:
+        result = result[0]['note']
+    else:
+        result = '''
+                <form action="process_update.py" method="get">
+                  <p><input type="hidden" name="id" value={id}>
+                     <input type="text" name="class1" value='{class1}'>
+                     <input type="text" name="class2" placeholder='{class2}'>
+                  </p>
+                  <p><textarea class="autosize" row="10" type="text" style="width:80%;" name="note">{note}</textarea></p>
+                </form>'''.format(id=id,class1=result[0]['class1'],class2='',note=result[0]['note'])
+    return result   #result[0]['note']
 
 def insertd(inlist):
     if len(inlist)==2:

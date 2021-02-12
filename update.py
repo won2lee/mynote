@@ -15,7 +15,7 @@ class1 = form["class1"].value if 'class1' in form else None
 class2 = form["class2"].value if 'class2' in form else None
 if 'id' in form:
     pageId = form["id"].value
-    description = get_note(pageId)
+    description = get_note(pageId,update=True)
     #update_link = '<a href="update.py?id={}&class1={}">update</a>'.format(pageId,class1)
     #description = open('data/'+pageId, 'r').read()
 else:
@@ -28,7 +28,7 @@ print('''<!doctype html>
 <head>
   <title>WEB1 - Welcome</title>
   <meta charset="utf-8">
-  <link type="text/css" rel="stylesheet" href="mystyle4.css">
+  <link type="text/css" rel="stylesheet" href="mystyle9.css">
 </head>
 <body>
   <h1><a href="index.py">My Note</a></h1>
@@ -43,7 +43,7 @@ print('''<!doctype html>
              <input type="text" name="class1" value='{class1}'>
              <input type="text" name="class2" placeholder='{class2}'>
           </p>
-          <p><textarea row="10" type="text" style="width:80%;" name="note">{note}</textarea></p>
+          <p><textarea class="autosize" row="10" type="text" style="width:80%;" name="note">{note}</textarea></p>
           <p><input type="submit"></p>
         </form>
     </div>

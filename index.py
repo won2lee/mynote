@@ -42,10 +42,13 @@ print('''<!doctype html>
 <head>
   <title>WEB1 - Welcome</title>
   <meta charset="utf-8">
-  <link type="text/css" rel="stylesheet" href="mystyle4.css">
+  <link type="text/css" rel="stylesheet" href="mystyle9.css">
+  <script src="colors.js"></script>
 </head>
 <body>
   <h1><a href="index.py">My Note</a></h1>
+  <input id="niteButton" type="button" value='day' onclick="
+  nightDayHandler(this);">
 
   <div id="grid">
       <ol reversed>
