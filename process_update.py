@@ -13,10 +13,6 @@ else:
         if 'class2' in form:
             inlist.append(form["class2"].value)
     linkdb.updated(inlist)
-    # opened_file=open("data/"+title,'w')
-    # opened_file.write(description)
-    # opened_file.close()
 
-    #Redirection
     print("Location: index.py")
 print()

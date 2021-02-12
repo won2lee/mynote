@@ -34,7 +34,7 @@ print('''<!doctype html>
     {listStr}
     </ol>
     <div id="article">
-        <form action="process_create.py" method="get">
+        <form action="process_create.py" method="post">
           <p><input type="text" name="class1" placeholder="basis">
              <input type="text" name="class2" placeholder="">
           </p>

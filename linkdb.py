@@ -10,17 +10,6 @@ open_db = pymysql.connect(
 )
 cursor = open_db.cursor(pymysql.cursors.DictCursor)
 
-# def form_maker(clss,id,class1=None):
-#     clfunc = "confirm" if clss=="delete" else clss
-#     scrpt = '''
-#             <form action="{clfunc}.py" method="post">
-#                 <input type="hidden" name="id" value="{id}">
-#                 <input type="hidden" name="class1" value="{class1}">
-#                 <input type="submit" value="{clss}">
-#             </form>
-#         '''.format(clss=clss,id=id,class1=class1,clfunc=clfunc)
-#     return scrpt
-
 def get_notelist(clist,class1):
     if clist:    # to list records in clicked class
         sql = "SELECT id,note,created,class1 FROM mynote WHERE class1='"+class1+"' ORDER BY id DESC LIMIT 20;"
@@ -39,7 +28,7 @@ def get_notelist(clist,class1):
 def get_note(id=None,update=False):
     if id:
         sql = "SELECT id,note,created,class1 FROM mynote WHERE id="+str(id)+";"
-        #sql = "SELECT id,note,created FROM mynote WHERE id='"+tl+"';"
+
     else:
         id=''
         sql = "SELECT id,note,created,class1 FROM mynote ORDER BY id DESC LIMIT 1;"
@@ -56,7 +45,7 @@ def get_note(id=None,update=False):
                   </p>
                   <p><textarea class="autosize" row="10" type="text" style="width:80%;" name="note">{note}</textarea></p>
                 </form>'''.format(id=id,class1=result[0]['class1'],class2='',note=result[0]['note'])
-    return result   #result[0]['note']
+    return result
 
 def insertd(inlist):
     if len(inlist)==2:
@@ -65,7 +54,7 @@ def insertd(inlist):
         class_added="class1,class2,"
     else:
         class_added=""
-    #inlist.insert(2,datetime.now().strftime('%Y-%m-%d %H:%M:%S'))
+
     inlist.append(datetime.now().strftime('%Y-%m-%d %H:%M:%S'))
     sql="INSERT INTO mynote (note,"+class_added+"created) VALUES ('"
     sql=sql+"','".join(inlist)+"');"
@@ -79,8 +68,7 @@ def updated(inlist):
             class_added=class_added+",class2='{}'".format(inlist[3])
     else:
         class_added=""
-    #inlist.insert(2,datetime.now().strftime('%Y-%m-%d %H:%M:%S'))
-    #inlist.append(datetime.now().strftime('%Y-%m-%d %H:%M:%S'))
+
     sql="UPDATE mynote SET note='{}'{} WHERE id='{}';".format(inlist[1],class_added,inlist[0])
     cursor.execute(sql)
     open_db.commit()
@@ -89,26 +77,3 @@ def deleted(inlist):
     sql="DELETE FROM mynote WHERE id='{}';".format(inlist[0])
     cursor.execute(sql)
     open_db.commit()
-
-
-# print(readSQL('MySQL'))
-#
-#
-# import pandas as pd
-#
-# result = pd.DataFrame(result)
-# print(result)
-#
-# sql = "INSERT INTO topic (title,description,created,author_id) VALUES('Python','Python is ..',NOW(),1);"
-# cursor.execute(sql)
-# open_db.commit()
-#
-# cursor = open_db.cursor(pymysql.cursors.DictCursor)
-#
-# sql = "SELECT * FROM topic;"
-# cursor.execute(sql)
-# result = cursor.fetchall()
-# print(result[0]['title'])
-# print(result[1]['title'])
-# print('\n\n')
-# print()

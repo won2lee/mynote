@@ -5,46 +5,10 @@ import cgi
 from linkdb import get_notelist, get_note
 from util import form_maker, js_css, gen_action
 
-# files = os.listdir('data')
-# listStr = ''
-# for item in files:
-#     listStr = listStr + '<li><a href="index.py?id={name}">{name}</a></li>'.format(name=item)
-
-# def form_maker(clss,id,class1=None):
-#     clfunc = "confirm" if clss=="delete" else clss
-#     scrpt = '''
-#             <form action="{clfunc}.py" method="post">
-#                 <input type="hidden" name="id" value="{id}">
-#                 <input type="hidden" name="class1" value="{class1}">
-#                 <input type="submit" value="{clss}">
-#             </form>
-#         '''.format(clss=clss,id=id,class1=class1,clfunc=clfunc)
-#     return scrpt
-
 form = cgi.FieldStorage()
-# def gen_action(form):
-#     clist = form["clist"].value if 'clist' in form else 0
-#     class1 = form["class1"].value if 'class1' in form else None
-#     class2 = form["class2"].value if 'class2' in form else None
-#
-#     if 'id' in form:
-#         noteId = form["id"].value
-#         description = get_note(noteId)
-#         update_link = form_maker('update',noteId,class1,class2)
-#         #'<a href="update.py?id={}&class1={}">update</a>'.format(pageId,class1)
-#         delete_action = form_maker('delete',noteId)
-#     else:
-#         noteId = ''
-#         description = get_note()
-#         update_link = ''
-#         delete_action = ''
-#     create_link=form_maker('create',1)
-#
-#     return noteId,clist,class1,description,"{}{}{}".format(create_link,update_link,delete_action)
 
 noteId,clist,class1,class2,description,bts = gen_action(form,"update")
-#tl = '"'+pageId+'"'
-# descDB = readSQL(pageId)[0]['description'] if pageId!="Welcome" else ''
+
 print('''<!doctype html>
 <html>
 <head>
@@ -74,8 +38,3 @@ print('''<!doctype html>
             desc=description,
             listStr=get_notelist(clist,class1),
             to_modify=bts))
-            # {create_link}{update_link}{delete_action}
-            # create_link=form_maker('create',1),
-            # update_link=update_link,
-            # delete_action=delete_action
-            # ))
