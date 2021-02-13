@@ -29,7 +29,7 @@ print('''<!doctype html>
 
 </head>
 <body>
-  <h1><a href="index.py">My Note</a></h1>
+  <h1><a href="index.py">My Notebook</a></h1>
 
   <div id="grid">
     <ol reversed>
