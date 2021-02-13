@@ -5,7 +5,7 @@ import cgi, linkdb
 
 form = cgi.FieldStorage()
 if 'note' not in form:
-    print("Location: create.py")
+    print("Location: index.py")
 else:
     inlist=[form["note"].value]
     if 'class1' in form:
