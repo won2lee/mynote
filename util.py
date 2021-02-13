@@ -4,17 +4,21 @@ from linkdb import get_note
 def form_maker(clss,id=None,class1=None,class2=None,note=''):
     if clss=="delete":
         clfunct="confirm"
+    elif clss=="create":
+        clfunct="update"
     elif clss=="modify":
         clfunct="process_update"
     elif clss=="generate":
         clfunct="process_create"
     else:
         clfunct=clss
+    #gen = clss # if (clss=="update" or clss=="create") else None
     hiddenTxt = "text" if (clss=="modify" or clss=="generate") else "hidden"
     # clfunc="confirm" if clss=="delete" else clss
     scrpt = '''
             <form action="{clfunct}.py" method="get">
                 <input type="hidden" name="id" value="{id}">
+                <input type="hidden" name="mod" value="{clss}">
                 <input type="{h_t}" name="class1" value="{class1}">
                 <input type="{h_t}" name="class2" value="{class2}">
                 {note}
@@ -31,10 +35,11 @@ def js_css():
         '''
     return scrpt
 
-def gen_action(form,action=None):
+def gen_action(form):
     clist = form["clist"].value if 'clist' in form else 0
     class1 = form["class1"].value if 'class1' in form else None
     class2 = form["class2"].value if 'class2' in form else None
+    action = form["mod"].value  if 'mod' in form else None
 
     if action=="update":
         noteId = form["id"].value
@@ -62,5 +67,5 @@ def gen_action(form,action=None):
         description = get_note()
         update_link = ''
         delete_action = ''
-    create_link=form_maker('create',1)
+    create_link=form_maker('create')
     return noteId,clist,class1,class2,description,"{}{}{}".format(create_link,update_link,delete_action)

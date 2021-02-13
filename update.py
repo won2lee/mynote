@@ -7,7 +7,7 @@ from util import form_maker, js_css, gen_action
 
 form = cgi.FieldStorage()
 
-noteId,clist,class1,class2,description,bts = gen_action(form,"update")
+noteId,clist,class1,class2,description,bts = gen_action(form)
 
 print('''<!doctype html>
 <html>
