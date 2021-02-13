@@ -1,16 +1,17 @@
 
 from linkdb import get_note
 
-def form_maker(clss,id,class1=None,class2=None,note=''):
+def form_maker(clss,id=None,class1=None,class2=None,note=''):
     if clss=="delete":
         clfunct="confirm"
     elif clss=="modify":
         clfunct="process_update"
+    elif clss=="generate":
+        clfunct="process_create"
     else:
         clfunct=clss
-    hiddenTxt = "text" if clss=="modify" else "hidden"
+    hiddenTxt = "text" if (clss=="modify" or clss=="generate") else "hidden"
     # clfunc="confirm" if clss=="delete" else clss
-
     scrpt = '''
             <form action="{clfunct}.py" method="get">
                 <input type="hidden" name="id" value="{id}">
@@ -38,11 +39,17 @@ def gen_action(form,action=None):
     if action=="update":
         noteId = form["id"].value
         note = get_note(noteId,update=True)
-        note ='''
+        note2 ='''
             <p><textarea class="autosize" row="10" type="text"
             style="width:80%;" name="note">{note}</textarea></p>
             '''.format(note=note)
-        return noteId,clist,class1,class2,get_note(noteId,update=True),form_maker('modify',noteId,class1,class2,note)
+        return noteId,clist,class1,class2,note,form_maker('modify',noteId,class1,class2,note2)
+    if action=="create":
+        note2 ='''
+            <p><textarea class="autosize" row="10" type="text"
+            style="width:80%;" name="note"></textarea></p>
+            '''
+        return '','','','','',form_maker('generate',note=note2)
 
     if 'id' in form:
         noteId = form["id"].value
