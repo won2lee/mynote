@@ -29,7 +29,7 @@ print('''<!doctype html>
   <link type="text/css" rel="stylesheet" href="mystyle9.css">
 </head>
 <body>
-  <h1><a href="index.py">My Note</a></h1>
+  <h1><a href="index.py">My Note Computer</a></h1>
 
   <div id="grid">
     <ol reversed>
