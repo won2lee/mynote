@@ -62,9 +62,9 @@ def insertd(inlist):
     open_db.commit()
 
 def updated(inlist):
-    if len(inlist)==3:
+    if len(inlist)>2:
         class_added=",class1='{}'".format(inlist[2])
-        if len(inlist)==4:
+        if len(inlist)>3:
             class_added=class_added+",class2='{}'".format(inlist[3])
     else:
         class_added=""
@@ -72,6 +72,7 @@ def updated(inlist):
     sql="UPDATE mynote SET note='{}'{} WHERE id='{}';".format(inlist[1],class_added,inlist[0])
     cursor.execute(sql)
     open_db.commit()
+    return sql
 
 def deleted(inlist):
     sql="DELETE FROM mynote WHERE id='{}';".format(inlist[0])

@@ -17,12 +17,12 @@ def form_maker(clss,id=None,class1=None,class2=None,note=''):
     # clfunc="confirm" if clss=="delete" else clss
     scrpt = '''
             <form action="{clfunct}.py" method="get">
-                <input type="hidden" name="id" value="{id}">
+                <p><input type="hidden" name="id" value="{id}">
                 <input type="hidden" name="mod" value="{clss}">
                 <input type="{h_t}" name="class1" value="{class1}">
-                <input type="{h_t}" name="class2" value="{class2}">
-                {note}
-                <input type="submit" value="{clss}">
+                <input type="{h_t}" name="class2" value="{class2}"></p>
+                <p>{note}</p>
+                <p><input type="submit" value="{clss}"></p>
             </form>
         '''.format(clss=clss,id=id,h_t=hiddenTxt,class1=class1,
             class2=class2,clfunct=clfunct,note=note)
@@ -45,14 +45,15 @@ def gen_action(form):
         noteId = form["id"].value
         note = get_note(noteId,update=True)
         note2 ='''
-            <p><textarea class="autosize" row="10" type="text"
-            style="width:80%;" name="note">{note}</textarea></p>
+            <textarea class="autosize" row="10" type="text"
+            style="width:80%;" name="note">{note}</textarea>
             '''.format(note=note)
         return noteId,clist,class1,class2,note,form_maker('modify',noteId,class1,class2,note2)
+
     if action=="create":
         note2 ='''
-            <p><textarea class="autosize" row="10" type="text"
-            style="width:80%;" name="note"></textarea></p>
+            <textarea class="autosize" row="10" type="text"
+            style="width:80%;" name="note"></textarea>
             '''
         return '','','','','',form_maker('generate',note=note2)
 
