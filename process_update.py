@@ -8,7 +8,7 @@ form = cgi.FieldStorage()
 if 'note' not in form:
     print("Location: index.py")
 else:
-    inlist=[form["id"].value, form["note"].value]
+    inlist=[form["id"].value, form["note"].value,form["created"].value]
     if 'class1' in form and form["class1"].value!='None':
         inlist.append(form["class1"].value)
         if 'class2' in form and form["class2"].value!='None':
