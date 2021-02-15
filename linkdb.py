@@ -3,7 +3,7 @@ from datetime import datetime
 
 open_db = pymysql.connect(
     user='root',
-    password='314159',
+    password='88888888',
     host='127.0.0.1',
     db='new_schema',
     charset='utf8'
