@@ -1,9 +1,10 @@
 import pymysql
 from datetime import datetime
+from tokeep import pswd
 
 open_db = pymysql.connect(
     user='root',
-    password='88888888',
+    password=pswd,
     host='127.0.0.1',
     db='new_schema',
     charset='utf8'
